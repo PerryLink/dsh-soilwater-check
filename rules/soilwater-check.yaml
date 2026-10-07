@@ -1,0 +1,223 @@
+# 土壤与地下水监测台账核对 规则库
+#
+# 规则数据与代码分离：替换本文件即可切换规则集版本，无需改动 TypeScript。
+#
+# 条款引用纪律（由 shared/ruleset.ts 强制校验）：
+#   - 每条规则必须写全 document / number / clause / excerpt / kind / source，
+#     且 excerpt 必须是逐字摘录，不得改写。
+#   - kind: direct                       条款直接规定了所检查的要求
+#   - kind: derived-from-principle       条款未直接规定，仅能由原则性条款推论（severity 最多 warn）
+#   - kind: institutional-configuration 阈值出自本机构配置（severity 最多 info）
+#
+# ⚠️⚠️ 本规则库的诚实说明：**excerpt 一律不是引文。**
+#   本插件核对的是"土壤与地下水监测台账"的**齐备与算术自洽**：
+#     点位名称与监测项目是否填写、监测结果是否可解析、采样日期是否可解析且不晚于核对日、
+#     执行标准是否填写、结果与限值是否可比较、超标判定是否与两数相符、
+#     样品编号是否重复、是否残留模板占位符。
+#   其规范载体按**效力层级**分列如下（据全国标准信息公共服务平台逐项核对，
+#   见 rules/evidence/clause-verification.md）：
+#     · **GB 36600—2018**《土壤环境质量 建设用地土壤污染风险管控标准（试行）》——
+#       官方标注「**国家标准 强制性**」，**现行**，2018-07-13 发布 / 2018-08-01 实施，
+#       **2024-07-23 复审结论"继续有效"**，部分代替 GB 15618-1995。**注意标准号不带"/T"。**
+#     · **GB/T 14848—2017**《地下水质量标准》—— 标准号带"/T"，为**推荐性**国家标准。
+#     · **HJ 25.1—2019**《建设用地土壤污染状况调查技术导则》—— **行业标准**，非强制性国标；
+#       ⚠️ 现行版本为 **2019 版，代替 HJ 25.1-2014**（据新疆维吾尔自治区生态环境厅官方发布页核实，
+#       见 rules/evidence/clause-verification-standards.md）。**引用 2014 版即为引用失效版本。**
+#     · **HJ 164—2020**《地下水环境监测技术规范》—— **行业标准**，非强制性国标；
+#       ✅ **版本已核实**（2026-10-07，见 rules/evidence/clause-verification-standards.md）：
+#       **生态环境部公告 2020 年第 57 号**（2020-12-01）逐字：「《地下水环境监测技术规范》
+#       （**HJ 164-2020**）……**本标准自 2021 年 3 月 1 日起实施**……自本标准实施之日起，
+#       《地下水环境监测技术规范》（**HJ/T 164-2004**）**废止**。」
+#       ⚠️ **注意代号差异**：旧版是 **HJ/T** 164-2004（带"/T"），新版是 **HJ** 164-2020（不带"/T"）
+#       —— **引用时不要把两者混为同一个编号**。
+#   ⚠️ **但这些标准的正文与限值表本次均未取得**：GB 36600 的官方页面只提供状态与元数据，
+#   其**表 1（筛选值）与表 2（管制值）未取得可引用的逐字文本**；HJ 系列与 GB/T 14848 本次未检索到全文。
+#   故每条 excerpt 仍如实写明"该条文本次未取得"，kind 保持 derived-from-principle（封顶 warn）。
+#   ⚠️ **效力层级的区分必须保留**（本规则库对"推荐性条款不得阻断流程"有明确口径，
+#   参见 dsh-power-ticket-check 对 GB 26860—2011 第 5 章的处理），
+#   **但本插件全部规则仍封顶 warn** —— 因为本插件核对的是"台账自洽"，不是"限值是否正确"，
+#   且限值所在的表 1／表 2 未取得，详见下条边界。
+#
+# ⚠️⚠️ 另一条**必须保留**的边界：**本插件绝不判定场地是否污染、
+#   是否需要修复、修复目标是否达成、调查结论是否成立**。
+#   那需要结合点位布设、水文地质条件与风险评估判断，是土壤与地下水调查的实质内容。
+#   → **本插件不内置任何限值**：它读台账自己写的"标准限值"栏，
+#     只核对**结果与限值两个数之间的关系是否与超标判定相符**。
+#     因此它**发现不了"限值取错了标准"**——这是它最重要的能力边界。
+#   → **超标判定取值（exceedValues）与介质清单（media）都出厂为空**。
+
+plugin: dsh-soilwater-check
+version: "2026.1"
+
+rules:
+  - id: SW-001
+    title: 每条记录都应填写点位名称与监测项目
+    severity: warn
+    basis:
+      document: 《建设用地土壤污染状况调查技术导则》
+      number: HJ 25.1—2019（代替 HJ 25.1-2014；条号本次未取得）
+      clause: 关于监测点位与监测项目的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://www.mee.gov.cn/
+    params:
+        check:
+          kind: presenceAny
+          fields: ["pointName","parameter"]
+          fix: 补填点位名称与监测项目；本条只核对是否填写，不判断点位布设是否合理
+    note: >-
+      监测结果若不写明"哪个点位的哪个项目"，数值就无法解释，
+      也无法与限值比对。本次未取得明文条号，故封顶 warn。
+      本条只核对"至少填了一个"，**不判断点位布设是否合理、监测项目是否齐全**。
+
+  - id: SW-002
+    title: 监测结果应为可解析的数值
+    severity: warn
+    basis:
+      document: 《地下水环境监测技术规范》
+      number: HJ 164—2020（代替 HJ/T 164—2004；2020-12-01 发布、2021-03-01 实施；条号本次未取得）
+      clause: 关于监测结果记录的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://www.mee.gov.cn/
+    params:
+        check:
+          kind: number
+          field: result
+          fix: 监测结果应填写数值；本条只核对可解析性，不判断结果是否可信
+    note: >-
+      监测结果可解析是"结果与限值比较"的前提。本次未取得明文条号，故封顶 warn。
+      本条**只核对能否解析为数值**（接受 `0.85`、`1.2×10-3` 这类写法中的数字部分），
+      **不判断该数值是否真实、检测方法是否正确**。
+      ⚠️ 检出限以下的写法（如"未检出"、"<0.01"）**会被判为不可解析而报出** ——
+      若本机构台账这样记录，请把 result 栏统一为数值加备注，或改用其它检查。
+
+  - id: SW-003
+    title: 采样日期应可解析且不晚于核对日
+    severity: warn
+    basis:
+      document: 《建设用地土壤污染状况调查技术导则》
+      number: HJ 25.1—2019（代替 HJ 25.1-2014；条号本次未取得）
+      clause: 关于采样与监测时序的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://www.mee.gov.cn/
+    params:
+        check:
+          kind: noFutureDate
+          field: sampledAt
+    note: >-
+      采样日期晚于核对日，说明日期填错了，或者记录了尚未发生的采样。
+      本次未取得明文条号，故封顶 warn。
+      本条识别 2026-03-15 与 2026-03-15 09:30 两种写法；无法解析时会单独报出，**不会静默跳过**。
+
+  - id: SW-004
+    title: 每条记录都应填写执行标准
+    severity: warn
+    basis:
+      document: 《土壤环境质量 建设用地土壤污染风险管控标准（试行）》
+      number: GB 36600—2018（本次未取得条文）
+      clause: 关于评价标准的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://www.mee.gov.cn/
+    params:
+        check:
+          kind: presence
+          field: standard
+          fix: 补填执行标准；本条只核对是否填写，不判断标准选用是否正确
+    note: >-
+      限值只有挂在具体的标准上才有意义：同一点位的同一项目，
+      执行 GB 36600 的第一类或第二类用地筛选值，结论可能不同。
+      本次未取得明文条号，故封顶 warn。
+      ⚠️ 本条**只核对"是否写了标准"，不核对"写的是不是应当适用的那一类"** ——
+      用地类型与标准类别的匹配需要查阅标准与场地资料，本插件不做。
+
+  - id: SW-005
+    title: 超标判定应与结果和限值的关系相符
+    severity: warn
+    basis:
+      document: 《土壤环境质量 建设用地土壤污染风险管控标准（试行）》
+      number: GB 36600—2018（本次未取得条文）
+      clause: 关于风险筛选值与超标判定的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://www.mee.gov.cn/
+    params:
+        check:
+          kind: thresholdCompare
+          valueField: result
+          limitField: limit
+          verdictField: exceed
+          overValues: ["超标","是","Y","yes","true","超出","不合格"]
+          atMostValues: ["达标","否","N","no","false","未超标","合格"]
+          tolerance: 0
+    note: >-
+      "结果与限值的大小关系"与"超标判定"必须一致，这是**定义性判断**，不是实质评价。
+      本次未取得明文条号，故封顶 warn。
+      ⚠️ 本条**只按台账自己写的限值做比较**，因此它**发现不了"限值取错了标准或类别"** ——
+      那需要查阅标准并按用地类型选择筛选值，本插件不做，也**不内置任何限值**。
+      两栏取值由 overValues 与 atMostValues 配置；判定取值不在两侧清单内时会单独报出。
+
+  - id: SW-006
+    title: 样品编号不应在台账内重复
+    severity: warn
+    basis:
+      document: 《地下水环境监测技术规范》
+      number: HJ 164—2020（代替 HJ/T 164—2004；2020-12-01 发布、2021-03-01 实施；条号本次未取得）
+      clause: 关于样品标识与流转记录的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://www.mee.gov.cn/
+    params:
+        check:
+          kind: unique
+          field: labNo
+    note: >-
+      样品编号唯一是"每个样品只被登记一次"的**前提条件**：
+      编号重复会让检测报告与台账无法对应，也可能意味着同一样品被重复计数。
+      本次未取得明文条号，故封顶 warn。比较时忽略空白字符。
+      注意：同一样品的不同监测项目各占一行时，应共用样品编号而**不要**重复使用行号栏。
+
+  - id: SW-007
+    title: 台账应声明项目与监测阶段
+    severity: warn
+    basis:
+      document: 《建设用地土壤污染状况调查技术导则》
+      number: HJ 25.1—2019（代替 HJ 25.1-2014；条号本次未取得）
+      clause: 关于调查阶段的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://www.mee.gov.cn/
+    params:
+        check:
+          kind: headerPresence
+          fields: ["project","phase"]
+    note: >-
+      台账若不写明项目与监测阶段，数据无法与调查阶段对应 ——
+      而不同阶段的点位布设与监测项目要求不同，结果也不能混用。
+      本次未取得明文条号，故封顶 warn。
+      配置项 project 对应材料表头的项目名称，phase 对应监测阶段（初步调查／详细调查／修复效果评估等）。
+
+  - id: SW-008
+    title: 监测项目栏不应残留未替换的占位符
+    severity: warn
+    basis:
+      document: 《建设用地土壤污染状况调查技术导则》
+      number: HJ 25.1—2019（代替 HJ 25.1-2014；条号本次未取得）
+      clause: 关于监测项目确定的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://www.mee.gov.cn/
+    params:
+        check:
+          kind: containsAny
+          field: parameter
+          terms: ["【","】","{{","}}","XXX","xxx","待填","待补充","TBD","todo","示例"]
+          fix: 监测项目应填写实际因子；残留占位符说明台账是照模板抄的
+    note: >-
+      台账若直接照抄模板，监测项目栏留下【】、XXX、待填、TBD 之类占位符时，
+      会让人误以为已经确定了监测因子 —— **而没有因子的监测数据是没有意义的**。
+      本次未取得明文条号，故封顶 warn。terms 可按本机构模板调整。
+
+disabled: []
