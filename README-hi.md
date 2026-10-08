@@ -42,8 +42,7 @@ needed, whether remediation targets were met, or whether a survey's conclusions 
 ## Install
 
 ```sh
-pnpm pack
-dsh plugin --profile <name> add ./*.tgz
+dsh plugin --profile <name> add dsh-soilwater-check
 dsh --profile <name> --dump-config | grep 'dsh-soilwater-check'
 ```
 
