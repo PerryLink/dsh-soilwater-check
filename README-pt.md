@@ -1,4 +1,25 @@
-# dsh-soilwater-check
+# dsh-soilwater-check — Verificação da integridade e da coerência aritmética do registo de monitorização de solo e águas subterrâneas
+
+`dsh-soilwater-check` lê um registo de monitorização de solo e águas subterrâneas —o cabeçalho do projeto mais uma linha por ponto e parâmetro— e verifica a integridade e a aritmética desse próprio registo: se cada linha indica o seu ponto e o seu parâmetro, se o resultado registado é analisável como número, se a data de amostragem é analisável e não é posterior à data de verificação, se está registada uma norma aplicável, se o veredicto de superação concorda com a relação entre o resultado e o limite que o próprio registo declara, se não há números de amostra repetidos, se o cabeçalho declara o projeto e a fase de monitorização, e se não resta nenhum marcador de modelo na coluna do parâmetro.
+
+## O que ele responde
+
+| Você pergunta | O que ele responde |
+|---|---|
+| O registo diz «达标», mas o resultado é superior ao limite escrito ao lado. Isso é detetado? | Sim. `SW-005` compara o resultado com o limite que o próprio registo declara e assinala a linha quando o veredicto não concorda com essa comparação. Não traz limites próprios, por isso não consegue detetar um limite retirado da norma ou da categoria de uso do solo errada, e um veredicto fora das listas configuradas é reportado em separado. |
+| A célula `result` diz `未检出` ou `<0.01`, porque o valor está abaixo do limite de deteção. O que faz a verificação? | `SW-002` reporta-o. A regra lê apenas a parte numérica da célula (`0.85` e `1.2×10-3` são aceites), pelo que a notação de limite de deteção é reportada como não analisável de propósito — registe o valor e coloque a observação noutra coluna, ou desative a regra. Verifica se é analisável, não se o valor é verdadeiro nem se o método está correto. |
+| Uma linha deixa a coluna `standard` vazia. | `SW-004` exige que a norma esteja preenchida em todas as linhas que tenham essa coluna. Verifica que uma norma está escrita, não que seja a norma aplicável: se a norma registada corresponde ao uso do solo e ao meio é uma questão substantiva que o plugin deixa ao leitor. |
+| Uma linha regista uma data de amostragem posterior à data de verificação e outra escreve a data como `2026/3/15`. | `SW-003` reporta um `sampledAt` posterior à data de verificação. A regra lê `2026-03-15` e `2026-03-15 09:30`; qualquer outro formato é reportado como não analisável em vez de ser ignorado em silêncio. Compara apenas datas: não julga se o dado é fiável. |
+| O mesmo `labNo` aparece em duas linhas, porque uma amostra foi analisada para vários parâmetros. | `SW-006` reporta um número de amostra repetido, porque a repetição quebra a ligação entre o relatório do laboratório e o registo; a comparação ignora espaços. Vários parâmetros de uma mesma amostra a partilhar um número de amostra é a forma prevista: mantenha-os em linhas separadas, mas não reutilize a coluna do número de linha. Sem coluna de número de amostra, a regra reporta-se em `skipped` em vez de passar em silêncio. |
+| A célula `parameter` ainda diz `待填` ou `【】`, porque o registo foi copiado do modelo. | `SW-008` reporta o marcador que resta na coluna do parâmetro (`【`, `】`, `{{`, `XXX`, `待填`, `TBD`, `示例` e termos semelhantes, editáveis no pacote de regras). Note que `SW-001` apenas exige que o nome do ponto ou o parâmetro esteja preenchido, pelo que um marcador conta como preenchido ali; é a regra dos marcadores que o deteta. Nenhuma das duas julga se o fator é o que deve ser monitorizado. |
+
+## Normas que segue
+
+| Documento | Número | Regras que o citam |
+|---|---|---|
+| 《建设用地土壤污染状况调查技术导则》 | HJ 25.1—2019（代替 HJ 25.1-2014；条号本次未取得） | SW-001, SW-003, SW-007, SW-008 |
+| 《地下水环境监测技术规范》 | HJ 164—2020（代替 HJ/T 164—2004；2020-12-01 发布、2021-03-01 实施；条号本次未取得） | SW-002, SW-006 |
+| 《土壤环境质量 建设用地土壤污染风险管控标准（试行）》 | GB 36600—2018（本次未取得条文） | SW-004, SW-005 |
 
 **Boundary:** this plugin checks a **土壤与地下水监测台账** for completeness and arithmetic — that each record
 names its point and parameter, that the result parses as a number, that the sampling date is not in the future,

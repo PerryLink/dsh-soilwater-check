@@ -1,4 +1,25 @@
-# dsh-soilwater-check
+# dsh-soilwater-check — Verificación de integridad y coherencia aritmética del registro de monitoreo de suelo y agua subterránea
+
+`dsh-soilwater-check` lee un registro de monitoreo de suelo y agua subterránea —la cabecera del proyecto más una fila por punto y parámetro— y comprueba la integridad y la aritmética de ese mismo registro: que cada fila nombre su punto y su parámetro, que el resultado registrado se pueda analizar como número, que la fecha de muestreo se pueda analizar y no sea posterior a la fecha de verificación, que se registre una norma aplicable, que el veredicto de superación concuerde con la relación entre el resultado y el límite que el propio registro declara, que no se repita ningún número de muestra, que la cabecera declare el proyecto y la fase de monitoreo, y que no quede ningún marcador de plantilla en la columna del parámetro.
+
+## Qué responde
+
+| Usted pregunta | Qué responde |
+|---|---|
+| El registro dice «达标», pero el resultado supera el límite escrito al lado. ¿Se detecta? | Sí. `SW-005` compara el resultado con el límite que el propio registro declara y señala la fila cuando el veredicto no concuerda con esa comparación. No incorpora ningún límite propio, así que no puede detectar un límite tomado de la norma o de la categoría de uso del suelo equivocada, y un veredicto fuera de sus listas configuradas se informa por separado. |
+| La celda `result` dice `未检出` o `<0.01`, porque el valor está por debajo del límite de detección. ¿Qué hace la comprobación? | `SW-002` lo informa. La regla lee solo la parte numérica de la celda (`0.85` y `1.2×10-3` se aceptan), así que la notación de límite de detección se informa como no analizable a propósito: registre el valor y ponga la observación en otra columna, o desactive la regla. Comprueba que se pueda analizar, no si la cifra es real ni si el método es correcto. |
+| Una fila deja vacía la columna `standard`. | `SW-004` exige que la norma esté rellenada en toda fila que lleve esa columna. Comprueba que se escriba una norma, no que sea la que corresponde: si la norma registrada concuerda con el uso del suelo y el medio es una cuestión sustantiva que el plugin deja al lector. |
+| Una fila registra una fecha de muestreo posterior a la fecha de verificación y otra escribe la fecha como `2026/3/15`. | `SW-003` informa de un `sampledAt` posterior a la fecha de verificación. La regla lee `2026-03-15` y `2026-03-15 09:30`; cualquier otra forma se informa como no analizable en lugar de omitirse en silencio. Solo compara fechas: no juzga si el dato es fiable. |
+| El mismo `labNo` aparece en dos filas, porque una muestra se analizó para varios parámetros. | `SW-006` informa de un número de muestra repetido, porque la repetición rompe el enlace entre el informe del laboratorio y el registro; la comparación ignora los espacios. Varios parámetros de una misma muestra que comparten un número de muestra es la forma prevista: manténgalos en filas separadas, pero no reutilice la columna del número de fila. Si no hay columna de número de muestra, la regla se informa en `skipped` en lugar de pasar en silencio. |
+| La celda `parameter` todavía dice `待填` o `【】`, porque el registro se copió de la plantilla. | `SW-008` informa del marcador que queda en la columna del parámetro (`【`, `】`, `{{`, `XXX`, `待填`, `TBD`, `示例` y términos similares, editables en el paquete de reglas). Tenga en cuenta que `SW-001` solo pide que el nombre del punto o el parámetro esté rellenado, así que un marcador cuenta como relleno allí; la regla de marcadores es la que lo detecta. Ninguna de las dos juzga si el factor es el que se debe monitorear. |
+
+## Normas que sigue
+
+| Documento | Número | Reglas que lo citan |
+|---|---|---|
+| 《建设用地土壤污染状况调查技术导则》 | HJ 25.1—2019（代替 HJ 25.1-2014；条号本次未取得） | SW-001, SW-003, SW-007, SW-008 |
+| 《地下水环境监测技术规范》 | HJ 164—2020（代替 HJ/T 164—2004；2020-12-01 发布、2021-03-01 实施；条号本次未取得） | SW-002, SW-006 |
+| 《土壤环境质量 建设用地土壤污染风险管控标准（试行）》 | GB 36600—2018（本次未取得条文） | SW-004, SW-005 |
 
 **Boundary:** this plugin checks a **土壤与地下水监测台账** for completeness and arithmetic — that each record
 names its point and parameter, that the result parses as a number, that the sampling date is not in the future,

@@ -1,4 +1,25 @@
-# dsh-soilwater-check
+# dsh-soilwater-check — Soil and groundwater monitoring register completeness and arithmetic consistency check
+
+`dsh-soilwater-check` reads one soil and groundwater monitoring register — the project header plus one row per point and parameter — and checks that register's own completeness and arithmetic: that each row names its point and its parameter, that the recorded result parses as a number, that the sampling date parses and is not later than the check date, that an applicable standard is recorded, that the exceedance verdict agrees with how the result compares to the limit the register itself states, that no sample number is repeated, that the header declares the project and the survey phase, and that no template placeholder survives in the parameter column.
+
+## What it answers
+
+| You ask | What it answers |
+|---|---|
+| The register's verdict says 达标, but the result is higher than the limit written beside it. Is that caught? | Yes. `SW-005` compares the result with the limit the register itself records and reports the row when the verdict disagrees with that comparison. It ships no limits of its own, so it cannot find a limit taken from the wrong standard or the wrong land-use category, and a verdict outside its configured over/at-most lists is reported separately. |
+| The `result` cell reads `未检出` or `<0.01`, because the value is below the detection limit. What does the check do? | `SW-002` reports it. The rule reads only the numeric part of a cell (`0.85` and `1.2×10-3` are accepted), so detection-limit notation is reported as unparseable on purpose — record the value and put the remark in another column, or disable the rule. It checks parseability, not whether the figure is true or the method correct. |
+| One row leaves the `standard` column empty. | `SW-004` requires the standard to be filled on every row that carries that column. It checks that a standard is written, not that it is the one that applies: whether the recorded standard matches the land use and the medium is a substantive question the plugin leaves to the reader. |
+| A row records a sampling date later than the check date, and another row writes the date as `2026/3/15`. | `SW-003` reports a `sampledAt` later than the check date. It reads `2026-03-15` and `2026-03-15 09:30`; any other form is reported as unparseable rather than silently skipped. The rule only compares the date — it does not judge whether the data is reliable. |
+| The same `labNo` appears on two rows, because one sample was analysed for several parameters. | `SW-006` reports a repeated sample number, because a repeat breaks the link between the laboratory report and the register; comparison ignores whitespace. Several parameters of one sample sharing one sample number is the intended shape — keep them on separate rows, but do not reuse the row-number column. With no sample-number column at all, the rule reports itself in `skipped` instead of passing silently. |
+| The `parameter` cell still reads `待填` or `【】`, because the register was copied from the template. | `SW-008` reports the leftover placeholder in the parameter column (`【`, `】`, `{{`, `XXX`, `待填`, `TBD`, `示例` and similar terms, editable in the pack). Note that `SW-001` asks only that the point name or the parameter be filled, so a placeholder counts as filled there; the placeholder rule is what catches it. Neither rule judges whether the factor is the right one to monitor. |
+
+## Standards it follows
+
+| Document | Number | Cited by rules |
+|---|---|---|
+| 《建设用地土壤污染状况调查技术导则》 | HJ 25.1—2019（代替 HJ 25.1-2014；条号本次未取得） | SW-001, SW-003, SW-007, SW-008 |
+| 《地下水环境监测技术规范》 | HJ 164—2020（代替 HJ/T 164—2004；2020-12-01 发布、2021-03-01 实施；条号本次未取得） | SW-002, SW-006 |
+| 《土壤环境质量 建设用地土壤污染风险管控标准（试行）》 | GB 36600—2018（本次未取得条文） | SW-004, SW-005 |
 
 **Boundary:** this plugin checks a **土壤与地下水监测台账** for completeness and arithmetic — that each record
 names its point and parameter, that the result parses as a number, that the sampling date is not in the future,
