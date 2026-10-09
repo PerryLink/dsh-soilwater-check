@@ -1,6 +1,14 @@
 # dsh-soilwater-check — Verificação da integridade e da coerência aritmética do registo de monitorização de solo e águas subterrâneas
 
+[![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
+
 `dsh-soilwater-check` lê um registo de monitorização de solo e águas subterrâneas —o cabeçalho do projeto mais uma linha por ponto e parâmetro— e verifica a integridade e a aritmética desse próprio registo: se cada linha indica o seu ponto e o seu parâmetro, se o resultado registado é analisável como número, se a data de amostragem é analisável e não é posterior à data de verificação, se está registada uma norma aplicável, se o veredicto de superação concorda com a relação entre o resultado e o limite que o próprio registo declara, se não há números de amostra repetidos, se o cabeçalho declara o projeto e a fase de monitorização, e se não resta nenhum marcador de modelo na coluna do parâmetro.
+
+## Como é a saída
+
+![Terminal demo of dsh-soilwater-check: real output over its SW-002 fixture](https://raw.githubusercontent.com/PerryLink/dsh-soilwater-check/main/docs/assets/dsh-soilwater-check-demo.png)
+
+Saída real deste plugin sobre o seu próprio fixture de teste `SW-002` — não é uma simulação. O pacote de regras não inventa citações, por isso cada achado nomeia a cláusula aplicada e avisa que o seu texto não foi obtido.
 
 ## O que ele responde
 
