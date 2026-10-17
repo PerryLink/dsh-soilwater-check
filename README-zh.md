@@ -4,6 +4,13 @@
 
 `dsh-soilwater-check` 读取一份土壤与地下水监测台账——项目表头加每个点位与监测项目一行——核对这份台账自身的齐备与算术：每条记录是否写明点位名称与监测项目、监测结果是否可解析为数值、采样日期是否可解析且不晚于核对日、是否填写了执行标准、超标判定是否与台账自己写的结果和限值的关系相符、样品编号是否重复、表头是否声明项目与监测阶段、监测项目栏是否残留模板占位符。
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-soilwater-check
+dsh --profile <name> --dump-config | grep 'dsh-soilwater-check'
+```
+
 ## 实际输出长什么样
 
 ![Terminal demo of dsh-soilwater-check: real output over its SW-002 fixture](https://raw.githubusercontent.com/PerryLink/dsh-soilwater-check/main/docs/assets/dsh-soilwater-check-hero.png)
@@ -69,13 +76,6 @@ needed, whether remediation targets were met, or whether a survey's conclusions 
 ## What it does
 
 规则表、字段说明与行为细节见 [README.md](README.md#what-it-does)（英文主版本）。本插件只列出材料与所引条款之间的字面差异，并对无法执行的检查在 `skipped` 中逐项说明。
-
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-soilwater-check
-dsh --profile <name> --dump-config | grep 'dsh-soilwater-check'
-```
 
 ## Configuration
 

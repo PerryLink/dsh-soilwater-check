@@ -4,6 +4,13 @@
 
 `dsh-soilwater-check` lê um registo de monitorização de solo e águas subterrâneas —o cabeçalho do projeto mais uma linha por ponto e parâmetro— e verifica a integridade e a aritmética desse próprio registo: se cada linha indica o seu ponto e o seu parâmetro, se o resultado registado é analisável como número, se a data de amostragem é analisável e não é posterior à data de verificação, se está registada uma norma aplicável, se o veredicto de superação concorda com a relação entre o resultado e o limite que o próprio registo declara, se não há números de amostra repetidos, se o cabeçalho declara o projeto e a fase de monitorização, e se não resta nenhum marcador de modelo na coluna do parâmetro.
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-soilwater-check
+dsh --profile <name> --dump-config | grep 'dsh-soilwater-check'
+```
+
 ## Como é a saída
 
 ![Terminal demo of dsh-soilwater-check: real output over its SW-002 fixture](https://raw.githubusercontent.com/PerryLink/dsh-soilwater-check/main/docs/assets/dsh-soilwater-check-hero.png)
@@ -69,13 +76,6 @@ needed, whether remediation targets were met, or whether a survey's conclusions 
 ## What it does
 
 A tabela de regras, os campos e o comportamento detalhado estão em [README.md](README.md#what-it-does) (versão principal em inglês). O plugin apenas lista divergências literais frente às cláusulas citadas e indica em `skipped` cada verificação que não pôde ser executada.
-
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-soilwater-check
-dsh --profile <name> --dump-config | grep 'dsh-soilwater-check'
-```
 
 ## Configuration
 

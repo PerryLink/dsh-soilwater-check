@@ -4,6 +4,13 @@
 
 `dsh-soilwater-check` मिट्टी और भूजल निगरानी का एक रजिस्टर पढ़ता है — परियोजना हेडर और प्रत्येक बिंदु तथा पैरामीटर की एक पंक्ति — और उसी रजिस्टर की पूर्णता और अंकगणित की जाँच करता है: क्या प्रत्येक पंक्ति में उसका बिंदु और पैरामीटर दर्ज है, क्या दर्ज परिणाम संख्या के रूप में पढ़ा जा सकता है, क्या नमूना-दिनांक पढ़ा जा सकता है और जाँच-दिनांक से बाद का नहीं है, क्या कोई लागू मानक दर्ज है, क्या सीमा-अतिक्रमण का निर्णय परिणाम और रजिस्टर में ही लिखी सीमा के संबंध से मेल खाता है, क्या कोई नमूना क्रमांक दोहराया नहीं गया है, क्या हेडर परियोजना और निगरानी-चरण घोषित करता है, और क्या पैरामीटर कॉलम में कोई टेम्पलेट प्लेसहोल्डर शेष नहीं है।
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-soilwater-check
+dsh --profile <name> --dump-config | grep 'dsh-soilwater-check'
+```
+
 ## आउटपुट कैसा दिखता है
 
 ![Terminal demo of dsh-soilwater-check: real output over its SW-002 fixture](https://raw.githubusercontent.com/PerryLink/dsh-soilwater-check/main/docs/assets/dsh-soilwater-check-hero.png)
@@ -69,13 +76,6 @@ needed, whether remediation targets were met, or whether a survey's conclusions 
 ## What it does
 
 नियम-सूची, फ़ील्ड और विस्तृत व्यवहार [README.md](README.md#what-it-does) (अंग्रेज़ी मुख्य संस्करण) में हैं। यह प्लगइन केवल उद्धृत धाराओं के सामने शाब्दिक अंतर सूचीबद्ध करता है और हर न चल पाई जाँच को `skipped` में बताता है।
-
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-soilwater-check
-dsh --profile <name> --dump-config | grep 'dsh-soilwater-check'
-```
 
 ## Configuration
 

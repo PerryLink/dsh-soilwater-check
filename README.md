@@ -4,6 +4,13 @@
 
 `dsh-soilwater-check` reads one soil and groundwater monitoring register — the project header plus one row per point and parameter — and checks that register's own completeness and arithmetic: that each row names its point and its parameter, that the recorded result parses as a number, that the sampling date parses and is not later than the check date, that an applicable standard is recorded, that the exceedance verdict agrees with how the result compares to the limit the register itself states, that no sample number is repeated, that the header declares the project and the survey phase, and that no template placeholder survives in the parameter column.
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-soilwater-check
+dsh --profile <name> --dump-config | grep 'dsh-soilwater-check'
+```
+
 ## What it looks like
 
 ![Terminal demo of dsh-soilwater-check: real output over its SW-002 fixture](https://raw.githubusercontent.com/PerryLink/dsh-soilwater-check/main/docs/assets/dsh-soilwater-check-hero.png)
@@ -81,13 +88,6 @@ point-and-parameter — applies a versioned rule pack, and returns a report.
 | `SW-006` | sample numbers are unique | warn | principle |
 | `SW-007` | the register names its project and survey phase | warn | principle |
 | `SW-008` | the parameter column holds no unreplaced placeholder | warn | principle |
-
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-soilwater-check
-dsh --profile <name> --dump-config | grep 'dsh-soilwater-check'
-```
 
 ## Configuration
 
