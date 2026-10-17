@@ -1,0 +1,14 @@
+[
+  {
+    "path": "docs/assets/dsh-soilwater-check-hero.png",
+    "kind": "hero",
+    "alt": "dsh-soilwater-check terminal output",
+    "caption": "Real dsh-soilwater-check checker output; 31 tests passed."
+  },
+  {
+    "path": "docs/assets/dsh-soilwater-check-demo.gif",
+    "kind": "demo",
+    "alt": "Animated dsh-soilwater-check terminal session",
+    "caption": "The same run, assembled line by line."
+  }
+]
