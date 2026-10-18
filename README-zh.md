@@ -40,12 +40,7 @@ dsh --profile <name> --dump-config | grep 'dsh-soilwater-check'
 | 《地下水环境监测技术规范》 | HJ 164—2020（代替 HJ/T 164—2004；2020-12-01 发布、2021-03-01 实施；条号本次未取得） | SW-002, SW-006 |
 | 《土壤环境质量 建设用地土壤污染风险管控标准（试行）》 | GB 36600—2018（本次未取得条文） | SW-004, SW-005 |
 
-**Boundary:** this plugin checks a **土壤与地下水监测台账** for completeness and arithmetic — that each record
-names its point and parameter, that the result parses as a number, that the sampling date is not in the future,
-that an applicable standard is recorded, that the exceedance verdict agrees with how the result compares to the
-limit the register states, that sample numbers are unique, that the register names its project and survey phase,
-and that no placeholder survives. It does **not** decide whether a site is contaminated, whether remediation is
-needed, whether remediation targets were met, or whether a survey's conclusions hold.
+**边界（中文译文，以英文原文为准）：** 本插件核对一份 **土壤与地下水监测台账** 的齐备性与算术——每条记录是否写明点位与监测参数，结果是否可解析为数值，采样日期是否不在未来，是否记录适用标准，超标判定结论是否与「结果相对于台账写明限值的比较结果」一致，样品编号是否唯一，台账是否写明其项目与监测阶段，以及是否残留占位符。它**不**判定场地是否受到污染、是否需要修复、修复目标是否达到，或某次调查的结论是否成立。
 
 > ### ⚠️ What this plugin deliberately cannot do
 >
