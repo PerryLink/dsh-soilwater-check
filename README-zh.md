@@ -42,24 +42,13 @@ dsh --profile <name> --dump-config | grep 'dsh-soilwater-check'
 
 **边界（中文译文，以英文原文为准）：** 本插件核对一份 **土壤与地下水监测台账** 的齐备性与算术——每条记录是否写明点位与监测参数，结果是否可解析为数值，采样日期是否不在未来，是否记录适用标准，超标判定结论是否与「结果相对于台账写明限值的比较结果」一致，样品编号是否唯一，台账是否写明其项目与监测阶段，以及是否残留占位符。它**不**判定场地是否受到污染、是否需要修复、修复目标是否达到，或某次调查的结论是否成立。
 
-> ### ⚠️ What this plugin deliberately cannot do
+> ### ⚠️ 本插件刻意做不到哪些事（以英文原文为准）
 >
-> **It ships no limits, and it does not check that the limit was taken from the right standard.** `SW-005`
-> compares the measured result against the limit **the register itself records** and checks that the verdict
-> agrees. So it **cannot find the consequential error: a screening value taken from the wrong standard or the
-> wrong land-use category.** Deciding between GB 36600's first and second category screening values, or between
-> GB 36600 and GB/T 14848, turns on the land use and the medium — this plugin reads neither. That limit is
-> stated in the pack's header, in `SW-004`'s and `SW-005`'s notes, and in the troubleshooting section.
+> **它不自带任何限值，也不核对限值是否取自正确的标准。** `SW-005` 把实测结果与**台账自己记录的**限值相比，并核对结论是否与之一致。因此它**发现不了那个后果严重的错误：筛选值取自错误的标准或错误的用地类别。** 在 GB 36600 第一类与第二类筛选值之间做选择，或者在 GB 36600 与 GB/T 14848 之间做选择，取决于用地性质与介质——这两样本插件都不读取。这一局限已写在规则库的库头、`SW-004` 与 `SW-005` 的 note 中，以及排障一节。
 >
-> `SW-002` requires a parseable number, so a register that writes detection-limit notation
-> (`未检出`, `<0.01`) is **reported as unparseable on purpose** — record the value with a remark, or disable the
-> rule.
+> `SW-002` 要求结果可解析为数值，因此台账若写成检出限的记法（`未检出`、`<0.01`），会被**有意报为无法解析**——请把数值连同备注一起记录，或停用该条规则。
 >
-> **Every `excerpt` in the rule pack says, in so many words, that the clause text was not obtained.** The regime
-> lives in GB 36600—2018, GB/T 14848—2017, HJ 25.1 and HJ 164. The verification pass could not retrieve verbatim
-> clause text, so the pack states the gap in the `excerpt` field itself and keeps every rule at `warn` or
-> `info`. **When the texts are in hand, replace each `excerpt` with the real clause and raise `kind` to
-> `direct`.**
+> **规则库中的每一个 `excerpt` 都明文写着：条款原文本次未取得。** 该制度见于 GB 36600—2018、GB/T 14848—2017、HJ 25.1 与 HJ 164。核验环节无法取得逐字条款原文，因此规则库在 `excerpt` 字段本身写明这一缺口，并把每条规则保持在 `warn` 或 `info`。**待取得原文后，请把每个 `excerpt` 换成真实条款，并把 `kind` 提到 `direct`。**
 
 ## Compatibility
 
