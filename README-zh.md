@@ -1,5 +1,7 @@
 # dsh-soilwater-check — 土壤与地下水监测台账核对
 
+[English](README.md) · [简体中文](README-zh.md) · [Español](README-es.md) · [Português](README-pt.md) · [हिन्दी](README-hi.md)
+
 [![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
 
 `dsh-soilwater-check` 读取一份土壤与地下水监测台账——项目表头加每个点位与监测项目一行——核对这份台账自身的齐备与算术：每条记录是否写明点位名称与监测项目、监测结果是否可解析为数值、采样日期是否可解析且不晚于核对日、是否填写了执行标准、超标判定是否与台账自己写的结果和限值的关系相符、样品编号是否重复、表头是否声明项目与监测阶段、监测项目栏是否残留模板占位符。
