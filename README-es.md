@@ -15,13 +15,19 @@ dsh --profile <name> --dump-config | grep 'dsh-soilwater-check'
 
 ## Cómo se ve la salida
 
-![Terminal demo of dsh-soilwater-check: real output over its SW-002 fixture](https://raw.githubusercontent.com/PerryLink/dsh-soilwater-check/main/docs/assets/dsh-soilwater-check-hero.png)
+![Diagrama de flujo de dsh-soilwater-check: documento → reglas → hallazgos.](docs/assets/dsh-soilwater-check-flow.svg)
 
-![Animated terminal demo of dsh-soilwater-check](https://raw.githubusercontent.com/PerryLink/dsh-soilwater-check/main/docs/assets/dsh-soilwater-check-demo.gif)
+*Resumen del flujo: documento → reglas → hallazgos. Los ejemplos siguientes usan la superficie de comandos real.*
+
 
 Salida real de este plugin sobre su propio fixture de prueba `SW-002` — no es un montaje. El paquete de reglas no inventa citas, así que cada hallazgo nombra la cláusula aplicada y advierte que su texto no se obtuvo.
 
 ## Qué responde
+
+### Ejemplos
+
+La tabla siguiente es el conjunto de ejemplos: la primera fila es el caso detallado y las demás son casos breves.
+
 
 | Usted pregunta | Qué responde |
 |---|---|
