@@ -30,6 +30,35 @@ dsh --profile <name> --dump-config | grep 'dsh-soilwater-check'
 下表是示例集：第一行是详细走查，其余行是简短案例。
 
 
+#### 详细输出
+
+**工具** `soilwater_check`
+
+**输入**
+
+~~~json
+{"rows":[{"监测结果":"80","标准限值":"60","超标情况":"达标"}]}
+~~~
+ 
+**输出**
+
+~~~json
+{
+  "id": "dsh-soilwater-check.SW-005.de09b5a6",
+  "ruleId": "SW-005",
+  "severity": "warn",
+  "locator": {
+    "row": 1,
+    "field": "exceed"
+  },
+  "found": "第 1 行「result」为 80、「limit」为 60，而判定为「达标」",
+  "expected": "80 超过限值 60，判定应表示超标",
+  "fix": "核对三个数值与判定；本条只按台账自己写的限值比较，不判断该限值是否取对了标准"
+}
+~~~
+
+*来源 `dsh-soilwater-check/tests/fixtures/SW-005/SW-005-unsafe.json`*
+
 | 你会问 | 它怎么答 |
 |---|---|
 | 台账填的是「达标」，但监测结果比旁边写的标准限值还高，能查出来吗？ | 能。`SW-005` 拿台账自己写的结果与限值相比，判定与这个关系不符时逐行报出。它不内置任何限值，所以发现不了「限值取错了标准或用地类别」；判定取值不在配置的超标／未超标两份清单内时，也会单独报出。 |

@@ -28,6 +28,35 @@ dsh --profile <name> --dump-config | grep 'dsh-soilwater-check'
 
 The table below is the example set: the first row is the detailed walkthrough, the remaining rows are short cases.
 
+#### Detailed output
+
+**Tool** `soilwater_check`
+
+**Input**
+
+~~~json
+{"rows":[{"监测结果":"80","标准限值":"60","超标情况":"达标"}]}
+~~~
+ 
+**Output**
+
+~~~json
+{
+  "id": "dsh-soilwater-check.SW-005.de09b5a6",
+  "ruleId": "SW-005",
+  "severity": "warn",
+  "locator": {
+    "row": 1,
+    "field": "exceed"
+  },
+  "found": "第 1 行「result」为 80、「limit」为 60，而判定为「达标」",
+  "expected": "80 超过限值 60，判定应表示超标",
+  "fix": "核对三个数值与判定；本条只按台账自己写的限值比较，不判断该限值是否取对了标准"
+}
+~~~
+
+*Observed from `dsh-soilwater-check/tests/fixtures/SW-005/SW-005-unsafe.json`*
+
 | You ask | What it answers |
 |---|---|
 | The register's verdict says 达标, but the result is higher than the limit written beside it. Is that caught? | Yes. `SW-005` compares the result with the limit the register itself records and reports the row when the verdict disagrees with that comparison. It ships no limits of its own, so it cannot find a limit taken from the wrong standard or the wrong land-use category, and a verdict outside its configured over/at-most lists is reported separately. |

@@ -30,6 +30,35 @@ Saída real deste plugin sobre o seu próprio fixture de teste `SW-002` — não
 A tabela abaixo é o conjunto de exemplos: a primeira linha é o caso detalhado e as demais são casos curtos.
 
 
+#### Saída detalhada
+
+**Ferramenta** `soilwater_check`
+
+**Entrada**
+
+~~~json
+{"rows":[{"监测结果":"80","标准限值":"60","超标情况":"达标"}]}
+~~~
+ 
+**Saída**
+
+~~~json
+{
+  "id": "dsh-soilwater-check.SW-005.de09b5a6",
+  "ruleId": "SW-005",
+  "severity": "warn",
+  "locator": {
+    "row": 1,
+    "field": "exceed"
+  },
+  "found": "第 1 行「result」为 80、「limit」为 60，而判定为「达标」",
+  "expected": "80 超过限值 60，判定应表示超标",
+  "fix": "核对三个数值与判定；本条只按台账自己写的限值比较，不判断该限值是否取对了标准"
+}
+~~~
+
+*Observado em `dsh-soilwater-check/tests/fixtures/SW-005/SW-005-unsafe.json`*
+
 | Você pergunta | O que ele responde |
 |---|---|
 | O registo diz «达标», mas o resultado é superior ao limite escrito ao lado. Isso é detetado? | Sim. `SW-005` compara o resultado com o limite que o próprio registo declara e assinala a linha quando o veredicto não concorda com essa comparação. Não traz limites próprios, por isso não consegue detetar um limite retirado da norma ou da categoria de uso do solo errada, e um veredicto fora das listas configuradas é reportado em separado. |
