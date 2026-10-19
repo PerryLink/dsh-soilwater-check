@@ -3,6 +3,7 @@
 [English](README.md) · [简体中文](README-zh.md) · [Español](README-es.md) · [Português](README-pt.md) · [हिन्दी](README-hi.md)
 
 [![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
+[![dshfind](https://dshfind.com/api/badge/PerryLink/dsh-soilwater-check?metric=downloads)](https://dshfind.com/en/plugins/PerryLink/dsh-soilwater-check?ref=badge)
 
 `dsh-soilwater-check` मिट्टी और भूजल निगरानी का एक रजिस्टर पढ़ता है — परियोजना हेडर और प्रत्येक बिंदु तथा पैरामीटर की एक पंक्ति — और उसी रजिस्टर की पूर्णता और अंकगणित की जाँच करता है: क्या प्रत्येक पंक्ति में उसका बिंदु और पैरामीटर दर्ज है, क्या दर्ज परिणाम संख्या के रूप में पढ़ा जा सकता है, क्या नमूना-दिनांक पढ़ा जा सकता है और जाँच-दिनांक से बाद का नहीं है, क्या कोई लागू मानक दर्ज है, क्या सीमा-अतिक्रमण का निर्णय परिणाम और रजिस्टर में ही लिखी सीमा के संबंध से मेल खाता है, क्या कोई नमूना क्रमांक दोहराया नहीं गया है, क्या हेडर परियोजना और निगरानी-चरण घोषित करता है, और क्या पैरामीटर कॉलम में कोई टेम्पलेट प्लेसहोल्डर शेष नहीं है।
 
