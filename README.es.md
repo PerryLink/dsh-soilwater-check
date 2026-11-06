@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-soilwater-check-flow-dark.svg">
-  <img src="docs/assets/dsh-soilwater-check-flow-light.svg" width="100%" alt="Flujo de datos de dsh-soilwater-check: rows[] registro de monitoreo → herramienta soilwater_check → paquete de reglas rules/*.yaml (SW-001..SW-008) → informe issues[] + skipped[] → veredicto del revisor; la configuración entra por rulesFile / disabledRules / onlyRules / skipNotes / timeoutMs">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-soilwater-check-hero-en-dark.webp">
+  <img src="docs/assets/dsh-soilwater-check-hero-en-light.webp" width="100%" alt="dsh-soilwater-check: a la izquierda el nombre y las frases de valor; a la derecha la fila 1 de un registro de monitoreo (S1 suelo superficial, arsénico, resultado 80, límite 60, veredicto «pass»), y debajo la comprobación de tres columnas SW-005 que muestra 80 > 60 frente a ese veredicto, ubicada en la fila 1 · field exceed; una diferencia, ninguna comprobación sin ejecutar y el veredicto en manos del revisor">
 </picture>
 
 # dsh-soilwater-check
@@ -43,6 +43,11 @@ No decide el cumplimiento, no atribuye responsabilidades y no sustituye al revis
 - **Para quién**: personal de registros y revisión de monitoreo ambiental e investigación de sitios; no hace falta saber usar la línea de comandos: entregue el material en el chat.
 - **Qué entrega**: el material original sobre el que trabaja la comprobación (un registro, tabla o documento); el original nunca se modifica. Excel puede convertirse antes a JSON/YAML, también en el chat si la plataforma lo permite.
 - **Qué recibe**: una lista de «qué fila, qué columna, qué falta, cómo corregirlo»; toda comprobación que no pudo ejecutarse aparece en `skipped` con su motivo.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-soilwater-check-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-soilwater-check-flow-v5-light.svg" width="100%" alt="Estructura de dsh-soilwater-check: un mismo registro revisado en tres ámbitos — cabecera (SW-007), celdas de cada fila (SW-001/002/003/004/008) y relaciones entre filas o columnas (SW-006 unicidad de la muestra, SW-005 resultado × límite × veredicto); cada diferencia vuelve a su fila y columna, issues[] y skipped[] alimentan un solo informe, la columna derecha muestra la relación entre evidencia y gravedad y el hueco de citas, y el veredicto queda en manos del revisor">
+</picture>
 
 ## Instalación en tres pasos
 
@@ -354,7 +359,7 @@ Ejecución local de la muestra (requiere `pnpm run build` antes para producir `l
 node samples/quickstart/run.mjs --json
 ```
 
-La entrada de la muestra está en `samples/quickstart/input/` y la salida esperada en `samples/quickstart/expected/result.json`. Las imágenes del README se generan programáticamente con [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Python + Pillow) y se pueden volver a ejecutar; el diagrama de flujo y las imágenes de demostración de una sola versión permanecen en `docs/assets/` para enlaces externos, mientras que los README solo referencian el nuevo par claro/oscuro.
+La entrada de la muestra está en `samples/quickstart/input/` y la salida esperada en `samples/quickstart/expected/result.json`. Las imágenes del README se generan programáticamente con [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Pillow para la imagen principal y SVG escrito a mano para el diagrama de estructura) y se pueden volver a ejecutar; el diagrama de flujo y las imágenes de demostración de una sola versión permanecen en `docs/assets/` para enlaces externos, mientras que los README solo referencian el par claro/oscuro de la imagen principal y de flow-v5.
 
 Topics: `deepseek-harness`, `dsh`, `dsh-plugin`, `cordis`, `soilwater`
 

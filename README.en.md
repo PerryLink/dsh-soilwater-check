@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-soilwater-check-flow-dark.svg">
-  <img src="docs/assets/dsh-soilwater-check-flow-light.svg" width="100%" alt="dsh-soilwater-check data flow: rows[] monitoring register → soilwater_check tool → rules/*.yaml rule pack (SW-001..SW-008) → issues[] + skipped[] report → reviewer verdict; config flows in via rulesFile / disabledRules / onlyRules / skipNotes / timeoutMs">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-soilwater-check-hero-en-dark.webp">
+  <img src="docs/assets/dsh-soilwater-check-hero-en-light.webp" width="100%" alt="dsh-soilwater-check: plugin name and value lines on the left; on the right row 1 of a monitoring register (S1 topsoil, arsenic, result 80, limit 60, verdict pass), and below it SW-005's three-column check showing 80 > 60 against that verdict, located at row 1 · field exceed; one finding, nothing skipped, the verdict stays with the reviewer">
 </picture>
 
 # dsh-soilwater-check
@@ -43,6 +43,11 @@ It does not decide compliance, does not find liability, and does not replace the
 - **Who it is for**: environmental monitoring and site-investigation record keepers and reviewers; no command line required — hand the material over in chat.
 - **What you give it**: the source material the check works on (a register, table, or document); the original is never modified. Excel can be converted to JSON/YAML first, in chat if the platform supports it.
 - **What you get back**: a list of "which row, which column, what is missing, how to fix it"; every check that could not run is listed in `skipped` with its reason.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-soilwater-check-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-soilwater-check-flow-v5-light.svg" width="100%" alt="dsh-soilwater-check structure: one register checked at three scopes — header (SW-007), each row's cells (SW-001/002/003/004/008), and cross-row or cross-column relations (SW-006 unique sample numbers, SW-005 result × limit × verdict); findings carry a row and column locator, issues[] and skipped[] feed one report, the right column shows the evidence-to-severity rule and the citation gap, and the verdict stays with the reviewer">
+</picture>
 
 ## Three-step setup
 
@@ -354,7 +359,7 @@ Local sample run (needs `pnpm run build` first to produce `lib/`):
 node samples/quickstart/run.mjs --json
 ```
 
-The sample input lives in `samples/quickstart/input/` and the expected output in `samples/quickstart/expected/result.json`. The README images are generated programmatically by [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Python + Pillow) and are safe to re-run; the older single-skin flow diagram and demo images stay in `docs/assets/` for external deep links, while the READMEs reference only the new light/dark pair.
+The sample input lives in `samples/quickstart/input/` and the expected output in `samples/quickstart/expected/result.json`. The README images are generated programmatically by [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Pillow for the hero, hand-written SVG for the structure diagram) and are safe to re-run; the older single-skin flow diagram and demo images stay in `docs/assets/` for external deep links, while the READMEs reference only the light/dark pairs of the hero and flow-v5.
 
 Topics: `deepseek-harness`, `dsh`, `dsh-plugin`, `cordis`, `soilwater`
 

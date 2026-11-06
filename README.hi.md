@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-soilwater-check-flow-dark.svg">
-  <img src="docs/assets/dsh-soilwater-check-flow-light.svg" width="100%" alt="dsh-soilwater-check डेटा प्रवाह: rows[] निगरानी रजिस्टर → soilwater_check उपकरण → rules/*.yaml नियम-पैक (SW-001..SW-008) → issues[] + skipped[] रिपोर्ट → समीक्षक का निर्णय; कॉन्फ़िगरेशन rulesFile / disabledRules / onlyRules / skipNotes / timeoutMs से आता है">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-soilwater-check-hero-en-dark.webp">
+  <img src="docs/assets/dsh-soilwater-check-hero-en-light.webp" width="100%" alt="dsh-soilwater-check: बाईं ओर प्लगइन का नाम और मूल्य-पंक्तियाँ; दाईं ओर निगरानी रजिस्टर की पंक्ति 1 (S1 सतही मिट्टी, आर्सेनिक, परिणाम 80, सीमा 60, निर्णय «pass») और उसके नीचे SW-005 की तीन-कॉलम जाँच जो 80 > 60 को उस निर्णय के सामने दिखाती है, स्थान पंक्ति 1 · field exceed; एक अंतर, कोई जाँच नहीं छूटी और निर्णय समीक्षक के पास">
 </picture>
 
 # dsh-soilwater-check
@@ -43,6 +43,11 @@ dsh plugin --profile <name> add dsh-soilwater-check
 - **किसके लिए**: पर्यावरण निगरानी और साइट-जाँच के रिकॉर्ड तथा समीक्षा कर्मी; कमांड लाइन जानने की आवश्यकता नहीं — सामग्री चैट में सौंप दें।
 - **आप क्या देते हैं**: वह मूल सामग्री जिस पर यह जाँच काम करती है (रजिस्टर, तालिका या दस्तावेज़); मूल कभी नहीं बदला जाता। Excel को पहले JSON/YAML में बदला जा सकता है, प्लेटफ़ॉर्म समर्थन दे तो चैट में भी।
 - **आपको क्या मिलता है**: «कौन-सी पंक्ति, कौन-सा कॉलम, क्या कमी है, कैसे सुधारें» की सूची; हर वह जाँच जो नहीं चल पाई, `skipped` में कारण के साथ दर्ज होती है।
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-soilwater-check-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-soilwater-check-flow-v5-light.svg" width="100%" alt="dsh-soilwater-check की संरचना: एक ही रजिस्टर तीन क्षेत्रों में जाँचा जाता है — हेडर (SW-007), प्रत्येक पंक्ति के कक्ष (SW-001/002/003/004/008) और पंक्ति-पार या कॉलम-पार संबंध (SW-006 नमूना-संख्या की विशिष्टता, SW-005 परिणाम × सीमा × निर्णय); प्रत्येक अंतर पंक्ति और कॉलम पर लौटता है, issues[] और skipped[] एक ही रिपोर्ट में मिलते हैं, दाईं ओर साक्ष्य-से-गंभीरता नियम और उद्धरण की कमी दिखती है, और निर्णय समीक्षक के पास रहता है">
+</picture>
 
 ## तीन चरणों में शुरुआत
 
@@ -354,7 +359,7 @@ pnpm pack                                           # प्रकाशित t
 node samples/quickstart/run.mjs --json
 ```
 
-नमूना इनपुट `samples/quickstart/input/` में और अपेक्षित आउटपुट `samples/quickstart/expected/result.json` में है। README की छवियाँ [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Python + Pillow) से प्रोग्रामेटिक रूप से बनती हैं और दोबारा चलाई जा सकती हैं; पुराना एकल-संस्करण प्रवाह आरेख और डेमो छवियाँ बाहरी लिंक के लिए `docs/assets/` में रहती हैं, जबकि README केवल नए लाइट/डार्क युग्म का संदर्भ देते हैं।
+नमूना इनपुट `samples/quickstart/input/` में और अपेक्षित आउटपुट `samples/quickstart/expected/result.json` में है। README की छवियाँ [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (मुख्य चित्र के लिए Pillow, संरचना आरेख के लिए हाथ से लिखा SVG) से प्रोग्रामेटिक रूप से बनती हैं और दोबारा चलाई जा सकती हैं; पुराना एकल-संस्करण प्रवाह आरेख और डेमो छवियाँ बाहरी लिंक के लिए `docs/assets/` में रहती हैं, जबकि README केवल मुख्य चित्र और flow-v5 के लाइट/डार्क युग्म का संदर्भ देते हैं।
 
 Topics: `deepseek-harness`, `dsh`, `dsh-plugin`, `cordis`, `soilwater`
 

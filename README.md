@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-soilwater-check-flow-dark.svg">
-  <img src="docs/assets/dsh-soilwater-check-flow-light.svg" width="100%" alt="dsh-soilwater-check 数据流：rows[] 监测台账 → soilwater_check 工具 → rules 规则包（SW-001 至 SW-008）→ issues 与 skipped 报告 → 审核人裁决；配置经 rulesFile、disabledRules、onlyRules、skipNotes、timeoutMs 注入">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-soilwater-check-hero-zh-dark.webp">
+  <img src="docs/assets/dsh-soilwater-check-hero-zh-light.webp" width="100%" alt="dsh-soilwater-check 配图：左列是插件名与价值句；右侧是一份监测台账第 1 行——S1 表层土、砷、结果 80、限值 60、判定写「达标」；下方 SW-005 三栏联动标出 80 > 60 与判定不符，差异落在第 1 行 · field exceed；报告 1 条差异、0 条未执行，结论留给审核人">
 </picture>
 
 # dsh-soilwater-check
@@ -43,6 +43,11 @@ dsh plugin --profile <name> add dsh-soilwater-check
 - **给谁用**：环保监测、场地调查的记录与审核人员；不用懂命令行，在对话里把材料交给它即可。
 - **你交什么**：这项核对用到的原始材料（台账表格、清单或文书）；不改原件。Excel 可先转成 JSON/YAML，对话里也能代转。
 - **它交什么**：一份「哪一行、哪一栏、差什么、怎么补」的清单；没能执行的检查逐条列入 `skipped` 并写明原因。
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-soilwater-check-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-soilwater-check-flow-v5-light.svg" width="100%" alt="dsh-soilwater-check 结构图：同一份台账按三种作用域核对——表头（SW-007）、单行×栏（SW-001/002/003/004/008）、跨行·跨栏（SW-006 样品编号唯一、SW-005 结果×限值×判定）；差异回到行号与栏名，issues[] 与 skipped[] 汇入同一份报告，右侧注明证据分级与引文缺口，结论留给审核人">
+</picture>
 
 ## 三步上手
 
@@ -346,7 +351,7 @@ pnpm pack                                           # 发布 tarball
 node samples/quickstart/run.mjs --json
 ```
 
-样例输入在 `samples/quickstart/input/`，期望输出在 `samples/quickstart/expected/result.json`。README 配图由 [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) 程序化生成（Python + Pillow），可重复执行；旧的单版流程图与演示图保留在 `docs/assets/` 供外链使用，README 只引用新生成的深浅双版。
+样例输入在 `samples/quickstart/input/`，期望输出在 `samples/quickstart/expected/result.json`。README 配图由 [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) 程序化生成（Pillow 生成 hero，手写 SVG 生成结构图），可重复执行；旧的单版流程图与演示图保留在 `docs/assets/` 供外链使用，README 只引用 hero 与 flow-v5 的深浅双版。
 
 Topics：`deepseek-harness`, `dsh`, `dsh-plugin`, `cordis`, `soilwater`
 
