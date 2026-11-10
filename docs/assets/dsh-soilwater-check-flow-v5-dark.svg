@@ -1,0 +1,167 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="660" viewBox="0 0 1100 660" role="img" aria-label="dsh-soilwater-check 结构图：一份台账按三种作用域核对——表头 SW-007、单行×栏 SW-001/002/003/004/008、跨行·跨栏 SW-006 与 SW-005；差异回到行号与栏名，一条 issues[] 与 skipped[] 通道汇入报告，结论留给审核人">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0.3" y2="1"><stop offset="0" stop-color="#131a2a"/><stop offset="1" stop-color="#0c1016"/></linearGradient>
+<filter id="soft" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#000000" flood-opacity="0.45"/></filter>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.4" markerHeight="6.4" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#8496f5"/></marker>
+</defs>
+<rect width="1100" height="660" fill="url(#bg)"/>
+<text x="44" y="50" fill="#f0f3f9" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="27" font-weight="700">dsh-soilwater-check</text>
+<rect x="343.0" y="30" width="129.0" height="22" rx="11.0" fill="#202839"/>
+<text x="355.0" y="45.6" fill="#8496f5" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" font-weight="700">soilwater_check</text>
+<text x="44" y="78" fill="#a8b1c4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="14">soilwater_check 读一份台账，按三种作用域核对；差异回到行号与栏名，未执行的逐条说明。</text>
+<rect x="895.0" y="30" width="161.0" height="26" rx="13.0" fill="#202839"/>
+<text x="907.0" y="47.6" fill="#8496f5" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" font-weight="700">v2026.1</text>
+<text x="964.0" y="47.2" fill="#8496f5" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">8 条 · 全部 warn</text>
+<line x1="44" y1="92" x2="1056" y2="92" stroke="#2b3348" stroke-width="1"/>
+<rect x="44" y="104" width="672" height="88" rx="20" fill="#1b2231" stroke="#2e374b" stroke-width="1.5" filter="url(#soft)"/>
+<circle cx="64" cy="128" r="11" fill="#8496f5"/>
+<text x="64" y="132" fill="#111827" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="12" text-anchor="middle" font-weight="700">1</text>
+<text x="84" y="114" fill="#f0f3f9" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13.5" font-weight="700">表头</text>
+<text x="84" y="134" fill="#737b8d" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11">header</text>
+<text x="84" y="158" fill="#737b8d" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">JSON / YAML · 别名归一</text>
+<rect x="214" y="112" width="119.0" height="24" rx="8" fill="#202839"/>
+<text x="224" y="128.4" fill="#f0f3f9" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" font-weight="700">project</text>
+<text x="279.0" y="128.0" fill="#f0f3f9" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">项目名称</text>
+<rect x="343.0" y="112" width="105.0" height="24" rx="8" fill="#202839"/>
+<text x="353.0" y="128.4" fill="#f0f3f9" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" font-weight="700">phase</text>
+<text x="394.0" y="128.0" fill="#f0f3f9" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">监测阶段</text>
+<rect x="214" y="144" width="133.0" height="24" rx="8" fill="#202839"/>
+<text x="224" y="160.4" fill="#f0f3f9" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" font-weight="700">checkedAt</text>
+<text x="293.0" y="160.0" fill="#f0f3f9" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">核对日期</text>
+<rect x="520" y="112" width="180" height="72" rx="14" fill="#202839"/>
+<text x="532" y="128" fill="#f0f3f9" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" font-weight="700">SW-007</text>
+<text x="532" y="148" fill="#a8b1c4" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11">headerPresence</text>
+<text x="532" y="166" fill="#a8b1c4" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11">project + phase</text>
+<rect x="644.0" y="118" width="44.0" height="20" rx="10.0" fill="#2a2216"/>
+<text x="654.0" y="132.18" fill="#d9a441" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11" font-weight="700">warn</text>
+<rect x="44" y="204" width="672" height="188" rx="20" fill="#1b2231" stroke="#2e374b" stroke-width="1.5" filter="url(#soft)"/>
+<circle cx="64" cy="228" r="11" fill="#8496f5"/>
+<text x="64" y="232" fill="#111827" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="12" text-anchor="middle" font-weight="700">2</text>
+<text x="84" y="214" fill="#f0f3f9" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13.5" font-weight="700">单行 × 栏</text>
+<text x="84" y="234" fill="#737b8d" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">row · 一条记录 = 点位 × 监测项目</text>
+<rect x="60" y="258" width="110" height="60" rx="9" fill="#202839" stroke="#2e374b" stroke-width="1"/>
+<text x="69" y="273" fill="#737b8d" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">点位名称</text>
+<text x="69" y="309" fill="#f0f3f9" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13.5">S1 表层土</text>
+<rect x="176" y="258" width="100" height="60" rx="9" fill="#202839" stroke="#2e374b" stroke-width="1"/>
+<text x="185" y="273" fill="#737b8d" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">监测项目</text>
+<text x="185" y="309" fill="#f0f3f9" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13.5">砷</text>
+<rect x="282" y="258" width="100" height="60" rx="9" fill="#202839" stroke="#2e374b" stroke-width="1"/>
+<text x="291" y="273" fill="#737b8d" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">监测结果</text>
+<text x="291" y="309" fill="#f0f3f9" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" font-weight="700">80</text>
+<rect x="388" y="258" width="128" height="60" rx="9" fill="#202839" stroke="#2e374b" stroke-width="1"/>
+<text x="397" y="273" fill="#737b8d" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">采样日期</text>
+<text x="397" y="309" fill="#f0f3f9" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" font-weight="700">2026-03-05</text>
+<rect x="522" y="258" width="170" height="60" rx="9" fill="#202839" stroke="#2e374b" stroke-width="1"/>
+<text x="531" y="273" fill="#737b8d" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">执行标准</text>
+<text x="531" y="309" fill="#f0f3f9" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" font-weight="700">GB 36600—2018</text>
+<rect x="60" y="330" width="121.0" height="26" rx="13.0" fill="#202839"/>
+<text x="72" y="347.6" fill="#8496f5" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" font-weight="700">SW-001</text>
+<text x="122.0" y="347.2" fill="#8496f5" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">点位|项目</text>
+<rect x="191.0" y="330" width="107.0" height="26" rx="13.0" fill="#202839"/>
+<text x="203.0" y="347.6" fill="#8496f5" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" font-weight="700">SW-008</text>
+<text x="253.0" y="347.2" fill="#8496f5" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">占位符</text>
+<rect x="308.0" y="330" width="96.0" height="26" rx="13.0" fill="#202839"/>
+<text x="320.0" y="347.6" fill="#8496f5" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" font-weight="700">SW-002</text>
+<text x="370.0" y="347.2" fill="#8496f5" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">数值</text>
+<rect x="414.0" y="330" width="96.0" height="26" rx="13.0" fill="#202839"/>
+<text x="426.0" y="347.6" fill="#8496f5" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" font-weight="700">SW-003</text>
+<text x="476.0" y="347.2" fill="#8496f5" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">日期</text>
+<rect x="520.0" y="330" width="96.0" height="26" rx="13.0" fill="#202839"/>
+<text x="532.0" y="347.6" fill="#8496f5" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" font-weight="700">SW-004</text>
+<text x="582.0" y="347.2" fill="#8496f5" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">标准</text>
+<text x="60" y="374" fill="#737b8d" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">列名按台账自己的写法；别名归一到 canonical 字段（忽略大小写、空格、下划线）。</text>
+<rect x="44" y="404" width="672" height="136" rx="20" fill="#1b2231" stroke="#2e374b" stroke-width="1.5" filter="url(#soft)"/>
+<circle cx="64" cy="428" r="11" fill="#8496f5"/>
+<text x="64" y="432" fill="#111827" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="12" text-anchor="middle" font-weight="700">3</text>
+<text x="84" y="414" fill="#f0f3f9" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13.5" font-weight="700">跨行 · 跨栏</text>
+<text x="84" y="434" fill="#737b8d" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">column · 一栏看全表，三栏一起看</text>
+<text x="60" y="454" fill="#737b8d" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">样品编号 labNo</text>
+<rect x="60" y="462" width="106" height="28" rx="9" fill="#202839" stroke="#d9a441" stroke-width="1.6"/>
+<text x="69" y="480.6" fill="#d9a441" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" font-weight="700">TR-2026-0018</text>
+<rect x="60" y="496" width="106" height="28" rx="9" fill="#202839" stroke="#d9a441" stroke-width="1.6"/>
+<text x="69" y="514.6" fill="#d9a441" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" font-weight="700">TR-2026-0018</text>
+<line x1="172" y1="466" x2="172" y2="520" stroke="#d9a441" stroke-width="1.6" opacity="0.6"/>
+<line x1="166" y1="466" x2="172" y2="466" stroke="#d9a441" stroke-width="1.6" opacity="0.6"/>
+<line x1="166" y1="520" x2="172" y2="520" stroke="#d9a441" stroke-width="1.6" opacity="0.6"/>
+<rect x="180" y="464" width="111.0" height="24" rx="12.0" fill="#2a2216"/>
+<text x="192" y="480.6" fill="#d9a441" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" font-weight="700">SW-006</text>
+<text x="242.0" y="480.2" fill="#d9a441" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">unique</text>
+<text x="180" y="500" fill="#d9a441" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">重复 → issue</text>
+<text x="180" y="518" fill="#737b8d" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">比较时忽略空白</text>
+<text x="320" y="454" fill="#737b8d" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">SW-005 三栏联动</text>
+<text x="470" y="454" fill="#737b8d" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11">thresholdCompare</text>
+<rect x="320" y="464" width="74" height="30" rx="9" fill="#202839" stroke="#2e374b" stroke-width="1"/>
+<text x="329" y="483.2" fill="#737b8d" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">结果</text>
+<text x="385" y="483.6" fill="#f0f3f9" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" text-anchor="end" font-weight="700">80</text>
+<text x="402" y="486" fill="#8496f5" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" text-anchor="middle" font-weight="700">&gt;</text>
+<rect x="414" y="464" width="74" height="30" rx="9" fill="#202839" stroke="#2e374b" stroke-width="1"/>
+<text x="423" y="483.2" fill="#737b8d" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">限值</text>
+<text x="479" y="483.6" fill="#f0f3f9" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" text-anchor="end" font-weight="700">60</text>
+<line x1="494" y1="479" x2="514" y2="479" stroke="#8496f5" stroke-width="1.6" marker-end="url(#arr)"/>
+<rect x="522" y="464" width="178" height="30" rx="9" fill="#2a2216" stroke="#d9a441" stroke-width="1.6"/>
+<text x="532" y="476" fill="#d9a441" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11" font-weight="700">80 &gt; 60</text>
+<text x="590" y="476" fill="#d9a441" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">应判「超标」</text>
+<rect x="320" y="500" width="74" height="30" rx="9" fill="#202839" stroke="#d9a441" stroke-width="1.6"/>
+<text x="329" y="519.2" fill="#737b8d" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">判定</text>
+<text x="385" y="519.6" fill="#d9a441" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13.5" text-anchor="end">达标</text>
+<circle cx="408" cy="515" r="9" fill="#2a2216" stroke="#d9a441" stroke-width="1.8"/>
+<path d="M404 511 L412 519" fill="none" stroke="#d9a441" stroke-width="2" stroke-linecap="round"/>
+<path d="M412 511 L404 519" fill="none" stroke="#d9a441" stroke-width="2" stroke-linecap="round"/>
+<text x="424" y="506" fill="#d9a441" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11.5">「达标」与两数关系不符</text>
+<text x="424" y="522" fill="#737b8d" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">第 1 行 · field exceed</text>
+<rect x="732" y="104" width="324" height="436" rx="20" fill="#1b2231" stroke="#2e374b" stroke-width="1.5" filter="url(#soft)"/>
+<text x="752" y="128" fill="#f0f3f9" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="15" font-weight="700">证据 → 严重级</text>
+<text x="752" y="148" fill="#737b8d" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11">severity follows the evidence</text>
+<text x="752" y="170" fill="#f0f3f9" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="12" font-weight="700">direct</text>
+<text x="752" y="188" fill="#a8b1c4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">条款直接规定</text>
+<rect x="966" y="160" width="70" height="20" rx="10" fill="#202839"/>
+<text x="1001" y="174" fill="#3fb950" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11" text-anchor="middle">&lt;= error</text>
+<text x="752" y="212" fill="#f0f3f9" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="12" font-weight="700">derived-from-principle</text>
+<text x="752" y="230" fill="#a8b1c4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">仅能由原则推论</text>
+<rect x="966" y="202" width="70" height="20" rx="10" fill="#202839"/>
+<text x="1001" y="216" fill="#d9a441" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11" text-anchor="middle">&lt;= warn</text>
+<text x="752" y="254" fill="#f0f3f9" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="12" font-weight="700">institutional-configuration</text>
+<text x="752" y="272" fill="#a8b1c4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">本机构配置阈值</text>
+<rect x="966" y="244" width="70" height="20" rx="10" fill="#202839"/>
+<text x="1001" y="258" fill="#a8b1c4" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11" text-anchor="middle">&lt;= info</text>
+<line x1="752" y1="300" x2="1036" y2="300" stroke="#2b3348" stroke-width="1"/>
+<text x="752" y="322" fill="#f0f3f9" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" font-weight="700">本包 · 8/8 无逐字引文</text>
+<text x="752" y="344" fill="#a8b1c4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">每条 excerpt 写明「本次未取得」；</text>
+<text x="752" y="362" fill="#a8b1c4" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11">kind = derived-from-principle</text>
+<text x="752" y="380" fill="#a8b1c4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">severity 封顶 warn；取得原文后再换 direct。</text>
+<line x1="752" y1="398" x2="1036" y2="398" stroke="#2b3348" stroke-width="1"/>
+<text x="752" y="420" fill="#f0f3f9" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" font-weight="700">config</text>
+<text x="752" y="440" fill="#8496f5" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11">rulesFile</text>
+<text x="752" y="456" fill="#737b8d" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">换规则包即换整套检查</text>
+<text x="752" y="468" fill="#8496f5" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11">disabledRules / onlyRules</text>
+<text x="752" y="484" fill="#737b8d" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">停用 / 只跑</text>
+<text x="752" y="496" fill="#8496f5" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11">skipNotes / timeoutMs</text>
+<text x="752" y="512" fill="#737b8d" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">skipped 备注 / 超时预算</text>
+<rect x="44" y="552" width="1012" height="70" rx="20" fill="#1b2231" stroke="#2e374b" stroke-width="1.5" filter="url(#soft)"/>
+<line x1="572" y1="564" x2="572" y2="610" stroke="#2b3348" stroke-width="1"/>
+<line x1="924" y1="564" x2="924" y2="610" stroke="#2b3348" stroke-width="1"/>
+<text x="60" y="570" fill="#8496f5" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" font-weight="700">issues[]</text>
+<rect x="122" y="558" width="84" height="18" rx="9" fill="#202839"/>
+<text x="164" y="571" fill="#d9a441" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="10.5" text-anchor="middle">2 条 · warn</text>
+<text x="60" y="590" fill="#f0f3f9" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">SW-005：80 &gt; 60 却判「达标」；SW-006：两行共用同一编号</text>
+<text x="60" y="608" fill="#737b8d" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11">每条带 ruleId · locator{row, field} · found · expected · fix</text>
+<text x="588" y="570" fill="#a8b1c4" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" font-weight="700">skipped[]</text>
+<rect x="672" y="558" width="46" height="18" rx="9" fill="#202839"/>
+<text x="695" y="571" fill="#a8b1c4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="10.5" text-anchor="middle">0 条</text>
+<text x="588" y="590" fill="#f0f3f9" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">disabled / only / 缺列 / 空清单 → 逐条写原因</text>
+<text x="588" y="608" fill="#737b8d" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">空 issues ≠ 没问题：两条通道一起读</text>
+<text x="940" y="570" fill="#f0f3f9" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13.5" font-weight="700">审核人</text>
+<text x="940" y="592" fill="#a8b1c4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">结论不在报告里</text>
+<text x="940" y="610" fill="#737b8d" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">只列差异</text>
+<line x1="44" y1="148" x2="28" y2="148" stroke="#8496f5" stroke-width="1.5" opacity="0.55"/>
+<line x1="44" y1="298" x2="28" y2="298" stroke="#8496f5" stroke-width="1.5" opacity="0.55"/>
+<line x1="44" y1="472" x2="28" y2="472" stroke="#8496f5" stroke-width="1.5" opacity="0.55"/>
+<line x1="28" y1="148" x2="28" y2="580" stroke="#8496f5" stroke-width="1.5" opacity="0.55"/>
+<line x1="28" y1="580" x2="42" y2="580" stroke="#8496f5" stroke-width="1.5" marker-end="url(#arr)" opacity="0.55"/>
+<circle cx="28" cy="148" r="2.4" fill="#8496f5"/>
+<circle cx="28" cy="298" r="2.4" fill="#8496f5"/>
+<circle cx="28" cy="472" r="2.4" fill="#8496f5"/>
+<text x="44" y="638" fill="#a8b1c4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">SW-005 只按台账自己写的限值比较，不判断限值是否取自正确的标准；空 issues ≠ 没问题。</text>
+<text x="44" y="652" fill="#737b8d" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">示例值取自 tests/fixtures/SW-005-unsafe.json 与 SW-006-unsafe.json ｜ 只读材料 · 不联网 · 不调用模型</text>
+<text x="1056" y="652" fill="#737b8d" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11" text-anchor="end">Apache-2.0 · PerryLink DSH plugin family</text>
+</svg>
