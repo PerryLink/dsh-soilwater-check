@@ -49,6 +49,11 @@ No decide el cumplimiento, no atribuye responsabilidades y no sustituye al revis
   <img src="docs/assets/dsh-soilwater-check-flow-v5-light.svg" width="100%" alt="Estructura de dsh-soilwater-check: un mismo registro revisado en tres ámbitos — cabecera (SW-007), celdas de cada fila (SW-001/002/003/004/008) y relaciones entre filas o columnas (SW-006 unicidad de la muestra, SW-005 resultado × límite × veredicto); cada diferencia vuelve a su fila y columna, issues[] y skipped[] alimentan un solo informe, la columna derecha muestra la relación entre evidencia y gravedad y el hueco de citas, y el veredicto queda en manos del revisor">
 </picture>
 
+![dsh-soilwater-check: ejecución real de terminal](docs/assets/dsh-soilwater-check-demo.gif)
+
+*Repetición animada de una ejecución real registrada en este repositorio.*
+
+
 ## Instalación en tres pasos
 
 1. **Instalar** (elija un canal):

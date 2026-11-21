@@ -135,6 +135,10 @@ Every PerryLink plugin is listed in the built-in DSH Desktop market: **Market â†
 
 ### Examples
 
+![dsh-soilwater-check: real terminal run](docs/assets/dsh-soilwater-check-demo.gif)
+
+*Animated replay of a real run recorded in this repository.*
+
 These are the plugin's real entry points; install once, then call one.
 
 **Detailed example** â€” tool `soilwater_check`, input:
