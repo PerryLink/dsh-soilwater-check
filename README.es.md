@@ -11,6 +11,8 @@
 
 Un plugin verificador de solo datos para DeepSeek Harness: lee un registro de monitoreo (la cabecera del proyecto más una fila por punto y parámetro), aplica el paquete de reglas versionado que incluye (SW-001..SW-008) y enumera solo las diferencias que puede señalar dentro del material: nunca un veredicto de cumplimiento, nunca una atribución de responsabilidad.
 
+Última verificación: DeepSeek Harness `dsh-v0.2.3-alpha.1` (2026-11-22).
+
 [Instalación](#instalación-en-tres-pasos) · [Configuración](#configuración) · [FAQ](#faq) · [简体中文](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [हिन्दी](README.hi.md)
 
 [![License](https://img.shields.io/badge/license-Apache--2.0-3366CC?style=flat-square&labelColor=2B3245)](LICENSE)
@@ -52,7 +54,6 @@ No decide el cumplimiento, no atribuye responsabilidades y no sustituye al revis
 ![dsh-soilwater-check: ejecución real de terminal](docs/assets/dsh-soilwater-check-demo.gif)
 
 *Repetición animada de una ejecución real registrada en este repositorio.*
-
 
 ## Instalación en tres pasos
 
