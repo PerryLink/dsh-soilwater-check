@@ -7,6 +7,8 @@
 
 # dsh-soilwater-check
 
+Current version `0.2.12`.
+
 **Check a soil and groundwater monitoring register for completeness and arithmetic consistency — you get a list of which row, which column, and what to fix; the verdict stays with the reviewer.**
 
 A data-only checker plugin for DeepSeek Harness: it reads one monitoring register (the project header plus one row per point and parameter), applies the versioned rule pack it ships (SW-001..SW-008), and lists only the differences it can point to inside the material — never a compliance verdict, never a liability finding.
